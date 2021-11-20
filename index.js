@@ -31,6 +31,13 @@ app.post("/musics", (req, res) => {
 // Change year of music
 app.put("/musics/:name", (req, res) => {
   const name = req.params.name;
+  if (!req.body.year) {
+    res.status(400).send({
+      message: "Year can not be empty!",
+    });
+    return;
+  }
+
   for (let i = 0; i < musics.length; i++) {
     if (musics[i].name === name) {
       musics[i].year = req.body.year;
@@ -38,6 +45,7 @@ app.put("/musics/:name", (req, res) => {
       return;
     }
   }
+  res.status(400).json("Music not found");
 });
 
 app.delete("/musics/:name", (req, res) => {
