@@ -1,8 +1,7 @@
 module.exports = class Music {
-  constructor(id, name, author, url) {
-    this.id = id;
+  constructor(name, author, year) {
     this.name = name;
     this.author = author;
-    this.url = url;
+    this.year = year;
   }
 };
